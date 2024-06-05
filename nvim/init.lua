@@ -1,0 +1,1 @@
+/home/pyro/.config/nvim/init.lua
