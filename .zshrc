@@ -49,6 +49,7 @@ alias cat="bat"
 alias install="sudo pacman -Sy"
 alias upgrade="sudo pacman -Syu"
 alias mkdir="mkdir -p"
+alias ll="ls -l --color"
 
 # Setup Powerlevel10k
 source ~/powerlevel10k/powerlevel10k.zsh-theme
