@@ -1,1 +1,2 @@
-/home/pyro/.config/nvim/init.lua
+vim.opt.number = true
+vim.opt.relativenumber = true
