@@ -13,7 +13,7 @@
       pyro = import ./home.nix;
     };
   };
-environment.pathsToLink = [ "/share/zsh" ];
+  environment.pathsToLink = [ "/share/zsh" ];
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -22,8 +22,9 @@ environment.pathsToLink = [ "/share/zsh" ];
   nixpkgs.config.allowUnfree = true;  
   networking.hostName = "nixos"; # Define your hostname.
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
-
-  # Set your time zone.
+  programs.ssh.enableAskPassword = false;
+  programs.ssh.askPassword = "";
+# Set your time zone.
   time.timeZone = "America/Chicago";
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-hyprland pkgs.xdg-desktop-portal-wlr ];
   xdg.portal.enable = true;
@@ -73,6 +74,7 @@ environment.pathsToLink = [ "/share/zsh" ];
       fastfetch
       zsh
       lvm2
+      bat
       xdg-desktop-portal
       xdg-desktop-portal-wlr
       xdg-desktop-portal-gtk
