@@ -151,6 +151,7 @@ in
     rofi-file-browser
     rofi-power-menu
     tealdeer
+    kdePackages.kdeconnect-kde
     wikiman
     slurp
     p7zip
