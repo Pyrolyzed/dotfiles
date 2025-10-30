@@ -24,7 +24,7 @@ in
   xdg.portal.config.common."org.freedesktop.impl.portal.FileChooser" = "gtk";
 
   networking.hostName = "atlas";
-
+  networking.hostId = "742b7683";
   time.timeZone = "America/Chicago";
 
   i18n.defaultLocale = "en_US.UTF-8";
@@ -66,6 +66,14 @@ in
   boot.initrd.kernelModules = [
     "amdgpu"
   ];
+
+  # Enable ZFS
+  boot.supportedFilesystems = [
+    "zfs"
+  ];
+  # Auto mount
+  boot.zfs.extraPools = [ "storage" ];
+
   fileSystems."/home/pyro/NAS" = {
     device = "//192.168.1.200/Storage";
     fsType = "cifs";
@@ -150,6 +158,7 @@ in
     pavucontrol
     btop
     vesktop
+    gptfdisk
     pipx
     parsec-bin
     vlc
