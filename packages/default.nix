@@ -11,4 +11,7 @@
         ./neovim-pyro
       ];
     }).neovim;
+  catppuccin-grub-patched = pkgs.catppuccin-grub.overrideAttrs (old: {
+    patches = [ ./grub/font-size.patch ];
+  });
 }

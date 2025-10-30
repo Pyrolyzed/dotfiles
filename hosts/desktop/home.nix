@@ -95,6 +95,7 @@ in
     window_padding_width = 10;
     window_padding_height = 5;
     enable_audio_bell = false;
+    background_opacity = 0.8;
   };
 
   programs.kitty.font = {
@@ -151,7 +152,9 @@ in
       "${mod}, Z, togglespecialworkspace, terminal"
       "${mod}, P, togglespecialworkspace, spotify"
       "${mod}, Q, exec, ${terminal}"
-      "${mod}, R, exec, wofi --show drun"
+      "${mod}, R, exec, rofi -show drun"
+      "${mod} SHIFT, R, exec, rofi -show calc -modi calc -no-show-match -no-sort"
+      "${mod} ALT, R, exec, rofi -show p -modi p:'rofi-power-menu'"
       "${mod}, X, fullscreen"
       "${mod}, C, killactive"
       "${mod}, M, exit"

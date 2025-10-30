@@ -11,6 +11,20 @@
       style = "mocha";
     };
 
+    treesitter.textobjects = {
+      enable = true;
+      setupOpts = {
+        select = {
+          enable = true;
+          keymaps = {
+            "af" = "@function.outer";
+            "if" = "@function.inner";
+          };
+          lookahead = true;
+        };
+      };
+    };
+
     assistant.copilot = {
       enable = true;
       cmp.enable = true;
@@ -27,6 +41,7 @@
       setupOpts.actions.open_file.resize_window = true;
       setupOpts.actions.open_file.quit_on_open = true;
     };
+
     options = {
       smartindent = true;
       magic = true;
@@ -50,6 +65,7 @@
       enableFormat = true;
       enableTreesitter = true;
       bash.enable = true;
+      lua.enable = true;
       nix = {
         enable = true;
         # nixfmt-rfc-style

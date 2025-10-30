@@ -22,7 +22,8 @@ in
   xdg.portal.enable = true;
   xdg.portal.config.common.default = "gnome";
   xdg.portal.config.common."org.freedesktop.impl.portal.FileChooser" = "gtk";
-  networking.hostName = "atlasone";
+
+  networking.hostName = "atlas";
 
   time.timeZone = "America/Chicago";
 
@@ -118,7 +119,6 @@ in
     manix
     neovim
     prismlauncher
-    qalculate-gtk
     python314
     ffmpeg-full
     filezilla
@@ -130,6 +130,18 @@ in
     xfce.thunar
     wl-clipboard
     grim
+    qalculate-gtk
+    (rofi.override {
+      plugins = with pkgs; [
+        rofi-calc
+        rofi-file-browser
+      ];
+    })
+    libqalculate
+    fastfetch
+    rofi-calc
+    rofi-file-browser
+    rofi-power-menu
     tealdeer
     wikiman
     slurp
@@ -152,7 +164,6 @@ in
     kitty
     copyq
     git
-    wofi
     dunst
     vesktop
     lsd
@@ -160,7 +171,6 @@ in
     zfs
     inputs.zen-browser.packages."${system}".default
   ];
-
   services.openssh.enable = true;
 
   system.stateVersion = "25.05"; # Did you read the comment?
