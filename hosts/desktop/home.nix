@@ -153,7 +153,7 @@ in
       "${mod}, P, togglespecialworkspace, spotify"
       "${mod}, Q, exec, ${terminal}"
       "${mod}, R, exec, rofi -show drun"
-      "${mod} SHIFT, R, exec, rofi -show calc -modi calc -no-show-match -no-sort"
+      "${mod} SHIFT, R, exec, rofi -show calc -modi calc -no-show-match -no-sort -calc-command \"echo -n '{result}' | wl-copy\""
       "${mod} ALT, R, exec, rofi -show p -modi p:'rofi-power-menu'"
       "${mod}, X, fullscreen"
       "${mod}, C, killactive"

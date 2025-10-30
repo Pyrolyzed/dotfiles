@@ -71,7 +71,7 @@
         # nixfmt-rfc-style
         format.type = "nixfmt";
         lsp = {
-          server = "nixd";
+          servers = "nixd";
         };
       };
       ts.enable = true;

@@ -151,6 +151,7 @@ in
     btop
     vesktop
     pipx
+    parsec-bin
     vlc
     bat
     sdl3

@@ -59,7 +59,7 @@ in
       }
       // cfg.aliases;
 
-      initExtra = optionalString cfg.options.extendedGlobbing ''
+      initContent = optionalString cfg.options.extendedGlobbing ''
         setopt extended_glob
       '';
       # repeat with "+ optionalString secondOptionName" for more options
