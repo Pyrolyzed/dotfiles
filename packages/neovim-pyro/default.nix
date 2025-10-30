@@ -42,6 +42,14 @@
       setupOpts.actions.open_file.quit_on_open = true;
     };
 
+    searchCase = "smart";
+    dashboard = {
+      startify = {
+        enable = true;
+        changeToVCRoot = true;
+      };
+    };
+
     options = {
       smartindent = true;
       magic = true;
@@ -59,6 +67,21 @@
     lsp = {
       enable = true;
       formatOnSave = true;
+      servers.nixd = {
+        init_options = {
+          nixos.expr = "(builtins.getFlake \"../../\").nixosConfigurations.desktop.options";
+          home-manager.expr = "(builtins.getFlake \"../../\").homeConfigurations.desktop.options";
+        };
+      };
+    };
+
+    git.enable = true;
+    lazy.enable = true;
+    notes.todo-comments.enable = true;
+
+    ui = {
+      colorizer.enable = true;
+      smartcolumn.enable = true;
     };
 
     languages = {
@@ -66,6 +89,10 @@
       enableTreesitter = true;
       bash.enable = true;
       lua.enable = true;
+      markdown = {
+        enable = true;
+        extensions.render-markdown-nvim.enable = true;
+      };
       nix = {
         enable = true;
         # nixfmt-rfc-style
