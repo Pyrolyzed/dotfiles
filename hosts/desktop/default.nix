@@ -60,7 +60,7 @@ in
     "zfs"
   ];
   # Auto mount
-  boot.zfs.extraPools = [ "storage" ];
+  #boot.zfs.extraPools = [ "storage" ];
 
   fileSystems."/home/pyro/NAS" = {
     device = "//192.168.1.200/Storage";
