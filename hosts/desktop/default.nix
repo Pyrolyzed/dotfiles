@@ -60,7 +60,7 @@ in
     "zfs"
   ];
   # Auto mount
-  #boot.zfs.extraPools = [ "storage" ];
+  boot.zfs.extraPools = [ "storage" ];
 
   fileSystems."/home/pyro/NAS" = {
     device = "//192.168.1.200/Storage";
@@ -96,6 +96,7 @@ in
   };
 
   programs.hyprland.enable = true;
+  programs.niri.enable = true;
 
   programs.steam = {
     enable = true;
@@ -113,15 +114,17 @@ in
   environment.systemPackages = with pkgs; [
     manix
     neovim
+    steamtinkerlaunch
     prismlauncher
     python314
     ffmpeg-full
+    clonehero
     filezilla
     man-pages
     man-pages-posix
-    onlyoffice-bin
+    onlyoffice-desktopeditors
     xrandr
-    glfw-wayland-minecraft
+    glfw3-minecraft
     xfce.thunar
     wl-clipboard
     grim
@@ -142,6 +145,7 @@ in
     wikiman
     slurp
     p7zip
+    xwayland-satellite
     fastfetch
     pavucontrol
     btop
@@ -150,6 +154,7 @@ in
     pipx
     parsec-bin
     vlc
+    protonup-qt
     bat
     sdl3
     custom.neovim-pyro
@@ -158,13 +163,14 @@ in
     unrar
     cifs-utils
     javaPackages.compiler.temurin-bin.jdk-21
-    firefox
     kitty
     copyq
     git
     dunst
     vesktop
     lsd
+    gamescope
+    labwc
     obsidian
     zfs
     inputs.zen-browser.packages."${system}".default

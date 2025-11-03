@@ -8,7 +8,11 @@
       url = "github:notashelf/nvf/v0.8";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
+    niri-scratchpad-flake = {
+      url = "github:gvolpe/niri-scratchpad";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    #niri.url = "github:sodiboo/niri-flake";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
 
     zen-browser = {
@@ -41,6 +45,7 @@
           ./hosts/desktop
           ./overlays
           inputs.home-manager.nixosModules.default
+          #inputs.niri.nixosModules.niri
         ];
       };
     };

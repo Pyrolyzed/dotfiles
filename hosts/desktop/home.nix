@@ -14,6 +14,7 @@ in
   imports = [
     ../../modules/homeManager/zsh.nix
   ];
+
   custom = {
     shell.zsh = {
       enable = true;
@@ -64,6 +65,7 @@ in
   };
   home.packages = with pkgs; [
     pinta
+    inputs.niri-scratchpad-flake.packages."x86_64-linux".niri-scratchpad
   ];
   programs.starship = {
     enable = true;
@@ -83,6 +85,43 @@ in
     enable = true;
     enableZshIntegration = true;
   };
+
+  xdg.mimeApps =
+    let
+      value =
+        let
+          zen-browser = inputs.zen-browser.packages."x86_64-linux".default;
+        in
+        zen-browser.meta.desktopFileName;
+
+      associations = builtins.listToAttrs (
+        map
+          (name: {
+            inherit name value;
+          })
+          [
+            "application/x-extension-shtml"
+            "application/x-extension-xhtml"
+            "application/x-extension-html"
+            "application/x-extension-xht"
+            "application/x-extension-htm"
+            "x-scheme-handler/unknown"
+            "x-scheme-handler/mailto"
+            "x-scheme-handler/chrome"
+            "x-scheme-handler/about"
+            "x-scheme-handler/https"
+            "x-scheme-handler/http"
+            "application/xhtml+xml"
+            "application/json"
+            "text/plain"
+            "text/html"
+          ]
+      );
+    in
+    {
+      associations.added = associations;
+      defaultApplications = associations;
+    };
   home.username = "pyro";
   home.homeDirectory = "/home/pyro";
 
@@ -95,7 +134,7 @@ in
     window_padding_width = 10;
     window_padding_height = 5;
     enable_audio_bell = false;
-    background_opacity = 0.8;
+    #background_opacity = 0.8;
   };
 
   programs.kitty.font = {
