@@ -16,12 +16,26 @@ in
 
   systemd.services.NetworkManager-wait-online.enable = false;
 
-  xdg.portal.extraPortals = with pkgs; [
-    xdg-desktop-portal-gtk
-  ];
-  xdg.portal.enable = true;
-  xdg.portal.config.common.default = "gnome";
-  xdg.portal.config.common."org.freedesktop.impl.portal.FileChooser" = "gtk";
+  xdg = {
+    portal = {
+      enable = true;
+      extraPortals = [
+        pkgs.xdg-desktop-portal-gtk
+        pkgs.xdg-desktop-portal-gnome
+      ];
+      config = {
+        niri = {
+          default = "gnome;gtk";
+          "org.freedesktop.impl.portal.Access" = "gtk";
+          "org.freedesktop.impl.portal.Notification" = "gtk";
+          "org.freedesktop.impl.portal.Secret" = "gnome-keyring";
+
+          "org.freedesktop.impl.portal.FileChooser" = "gtk";
+        };
+      };
+      configPackages = [ pkgs.niri ]; # This gets overridden by the config above
+    };
+  };
 
   networking.hostName = "atlas";
   networking.hostId = "742b7683";
@@ -33,6 +47,7 @@ in
     "flakes"
   ];
 
+  services.dbus.implementation = "broker";
   services.printing.enable = true;
 
   services.displayManager.sddm.enable = true;
@@ -95,7 +110,7 @@ in
     };
   };
 
-  programs.hyprland.enable = true;
+  #programs.hyprland.enable = true;
   programs.niri.enable = true;
 
   programs.steam = {
@@ -128,6 +143,7 @@ in
     xfce.thunar
     wl-clipboard
     grim
+    arma3-unix-launcher
     qalculate-gtk
     (rofi.override {
       plugins = with pkgs; [
@@ -136,6 +152,7 @@ in
       ];
     })
     libqalculate
+    mangohud
     fastfetch
     rofi-calc
     rofi-file-browser

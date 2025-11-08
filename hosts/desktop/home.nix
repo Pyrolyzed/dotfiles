@@ -141,7 +141,7 @@ in
     size = 16;
     name = "Caskaydia Cove NerdFont Mono";
   };
-  wayland.windowManager.hyprland.enable = true;
+  #wayland.windowManager.hyprland.enable = true;
 
   home.sessionVariables = {
     EDITOR = "nvim";
@@ -150,75 +150,78 @@ in
     QT_QPA_PLATFORM = "wayland";
   };
 
-  wayland.windowManager.hyprland.settings = {
-    xwayland.force_zero_scaling = true;
-    exec-once = [
-      "xrandr --output DP-1 --primary"
-      "dunst"
-      "copyq --start-server"
-    ];
-    monitor = [
-      "DP-1,3840x2160@240,0x0,1.5"
-      "DP-2,2560x1440@144,2560x0,1.25"
-    ];
-    workspace = [
-      "1,monitor:DP-1,default:true"
-      "2,monitor:DP-1"
-      "3,monitor:DP-1"
-      "4,monitor:DP-2,default:true"
-      "5,monitor:DP-2"
-      "6,monitor:DP-2"
-      "special:terminal,on-created-empty:[float;size 75% 75%] kitty, persistent:false"
-      "special:spotify,on-created-empty:[float;size 75% 75%] spotify, persistent:false"
-    ];
-    misc."enable_anr_dialog" = false;
-    input.accel_profile = "flat";
+  #wayland.windowManager.hyprland.settings = {
+  #  xwayland.force_zero_scaling = true;
+  #  exec-once = [
+  #    "xrandr --output DP-1 --primary"
+  #    "dunst"
+  #    "copyq --start-server"
+  #  ];
+  #  #decoration = {
+  #  #  rounding = 8;
+  #  #};
+  #  monitor = [
+  #    "DP-1,3840x2160@240,0x0,1.5"
+  #    "DP-2,2560x1440@144,2560x0,1.25"
+  #  ];
+  #  workspace = [
+  #    "1,monitor:DP-1,default:true"
+  #    "2,monitor:DP-1"
+  #    "3,monitor:DP-1"
+  #    "4,monitor:DP-2,default:true"
+  #    "5,monitor:DP-2"
+  #    "6,monitor:DP-2"
+  #    "special:terminal,on-created-empty:[float;size 75% 75%] kitty, persistent:false"
+  #    "special:spotify,on-created-empty:[float;size 75% 75%] spotify, persistent:false"
+  #  ];
+  #  misc."enable_anr_dialog" = false;
+  #  input.accel_profile = "flat";
 
-    general = {
-      layout = "dwindle";
-      allow_tearing = false;
-      resize_on_border = false;
-      gaps_in = 10;
-      gaps_out = 15;
-      border_size = 2;
-    };
+  #  general = {
+  #    layout = "dwindle";
+  #    allow_tearing = false;
+  #    resize_on_border = false;
+  #    gaps_in = 10;
+  #    gaps_out = 15;
+  #    border_size = 4;
+  #  };
 
-    windowrulev2 = [
-      "suppressevent maximize, class:."
-    ];
-    bind = [
-      "${mod}, F, exec, ${browser}"
-      "${mod}, Z, togglespecialworkspace, terminal"
-      "${mod}, P, togglespecialworkspace, spotify"
-      "${mod}, Q, exec, ${terminal}"
-      "${mod}, R, exec, rofi -show drun"
-      "${mod} SHIFT, R, exec, rofi -show calc -modi calc -no-show-match -no-sort -calc-command \"echo -n '{result}' | wl-copy\""
-      "${mod} ALT, R, exec, rofi -show p -modi p:'rofi-power-menu'"
-      "${mod}, X, fullscreen"
-      "${mod}, C, killactive"
-      "${mod}, M, exit"
-      "${mod}, V, togglefloating"
-      "${mod}, H, movefocus, l"
-      "${mod}, J, movefocus, d"
-      "${mod}, K, movefocus, u"
-      "${mod}, L, movefocus, r"
-      "${mod}, 1, workspace, 1"
-      "${mod}, 2, workspace, 2"
-      "${mod}, 3, workspace, 3"
-      "${mod}, 4, workspace, 4"
-      "${mod} SHIFT, S, exec, grim -g \"$(slurp -d)\" - | wl-copy"
-      "${mod}, 5, workspace, 5"
-      "${mod}, 6, workspace, 6"
-      "${mod} SHIFT, 1, movetoworkspace, 1"
-      "${mod} SHIFT, 2, movetoworkspace, 2"
-      "${mod} SHIFT, 3, movetoworkspace, 3"
-      "${mod} SHIFT, 4, movetoworkspace, 4"
-      "${mod} SHIFT, 5, movetoworkspace, 5"
-      "${mod} SHIFT, 6, movetoworkspace, 6"
-    ];
-    bindm = [
-      "${mod}, mouse:272, movewindow"
-      "${mod}, mouse:273, resizewindow"
-    ];
-  };
+  #  windowrulev2 = [
+  #    "suppressevent maximize, class:."
+  #  ];
+  #  bind = [
+  #    "${mod}, F, exec, ${browser}"
+  #    "${mod}, Z, togglespecialworkspace, terminal"
+  #    "${mod}, P, togglespecialworkspace, spotify"
+  #    "${mod}, Q, exec, ${terminal}"
+  #    "${mod}, R, exec, rofi -show drun"
+  #    "${mod} SHIFT, R, exec, rofi -show calc -modi calc -no-show-match -no-sort -calc-command \"echo -n '{result}' | wl-copy\""
+  #    "${mod} ALT, R, exec, rofi -show p -modi p:'rofi-power-menu'"
+  #    "${mod}, X, fullscreen"
+  #    "${mod}, C, killactive"
+  #    "${mod}, M, exit"
+  #    "${mod}, V, togglefloating"
+  #    "${mod}, H, movefocus, l"
+  #    "${mod}, J, movefocus, d"
+  #    "${mod}, K, movefocus, u"
+  #    "${mod}, L, movefocus, r"
+  #    "${mod}, 1, workspace, 1"
+  #    "${mod}, 2, workspace, 2"
+  #    "${mod}, 3, workspace, 3"
+  #    "${mod}, 4, workspace, 4"
+  #    "${mod} SHIFT, S, exec, grim -g \"$(slurp -d)\" - | wl-copy"
+  #    "${mod}, 5, workspace, 5"
+  #    "${mod}, 6, workspace, 6"
+  #    "${mod} SHIFT, 1, movetoworkspace, 1"
+  #    "${mod} SHIFT, 2, movetoworkspace, 2"
+  #    "${mod} SHIFT, 3, movetoworkspace, 3"
+  #    "${mod} SHIFT, 4, movetoworkspace, 4"
+  #    "${mod} SHIFT, 5, movetoworkspace, 5"
+  #    "${mod} SHIFT, 6, movetoworkspace, 6"
+  #  ];
+  #  bindm = [
+  #    "${mod}, mouse:272, movewindow"
+  #    "${mod}, mouse:273, resizewindow"
+  #  ];
+  #};
 }
