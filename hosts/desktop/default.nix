@@ -9,11 +9,19 @@ in
 {
   imports = [
     ./hardware-configuration.nix
-    ../../modules/grub.nix
-    ../../modules/spicetify.nix
-    ../../modules/network.nix
+    ../../modules/nixos/grub.nix
+    ../../modules/nixos/apps/gaming.nix
+    ../../modules/nixos/apps/spicetify.nix
+    ../../modules/nixos/network.nix
   ];
 
+  custom = {
+    apps.gaming = {
+      enable = true;
+      minecraft.enable = true;
+      lutris.enable = true;
+    };
+  };
   systemd.services.NetworkManager-wait-online.enable = false;
 
   xdg = {
@@ -110,14 +118,7 @@ in
     };
   };
 
-  #programs.hyprland.enable = true;
   programs.niri.enable = true;
-
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true;
-    localNetworkGameTransfers.openFirewall = true;
-  };
 
   fonts.packages = with pkgs; [
     noto-fonts
@@ -130,7 +131,6 @@ in
     manix
     neovim
     steamtinkerlaunch
-    prismlauncher
     python314
     ffmpeg-full
     clonehero
