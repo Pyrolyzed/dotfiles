@@ -1,6 +1,7 @@
 {
   pkgs,
   lib,
+  host ? "desktop",
   ...
 }:
 {
@@ -49,7 +50,6 @@
         changeToVCRoot = true;
       };
     };
-
     options = {
       smartindent = true;
       magic = true;
@@ -67,10 +67,13 @@
     lsp = {
       enable = true;
       formatOnSave = true;
+      lspkind.enable = true;
+      trouble.enable = true;
       servers.nixd = {
+        enable = true;
         init_options = {
-          nixos.expr = "(builtins.getFlake \"../../\").nixosConfigurations.desktop.options";
-          home-manager.expr = "(builtins.getFlake \"../../\").homeConfigurations.desktop.options";
+          nixos.expr = "(builtins.getFlake \"/home/pyro/dotfiles\").nixosConfigurations.${host}.options";
+          home-manager.expr = "(builtins.getFlake \"/home/pyro/dotfiles\").nixosConfigurations.${host}.options.home-manager.users.type.getSubOptions";
         };
       };
     };
@@ -95,10 +98,11 @@
       };
       nix = {
         enable = true;
+        treesitter.enable = true;
         # nixfmt-rfc-style
         format.type = "nixfmt";
         lsp = {
-          servers = "nixd";
+          server = "nixd";
         };
       };
       ts.enable = true;

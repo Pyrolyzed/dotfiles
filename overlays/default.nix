@@ -1,6 +1,7 @@
 {
   inputs,
   pkgs,
+  host,
   ...
 }:
 {
@@ -10,7 +11,10 @@
         (prev.custom or { })
         // (import ../packages {
           inherit (prev) pkgs;
-          inherit inputs;
+          inherit
+            inputs
+            host
+            ;
         });
     })
     #inputs.niri.overlays.niri

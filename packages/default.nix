@@ -1,12 +1,16 @@
 {
   inputs,
   pkgs,
+  host,
   ...
 }:
 {
   neovim-pyro =
     (inputs.nvf.lib.neovimConfiguration {
-      inherit pkgs;
+      inherit
+        pkgs
+        ;
+      extraSpecialArgs = { inherit host; };
       modules = [
         ./neovim-pyro
       ];

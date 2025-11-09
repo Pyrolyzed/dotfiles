@@ -29,7 +29,6 @@ in
       ]
       ++ lib.optionals cfg.lutris.enable [ lutris ]
       ++ lib.optionals cfg.minecraft.enable [ prismlauncher ];
-
     programs.steam = {
       enable = true;
       remotePlay.openFirewall = true;
