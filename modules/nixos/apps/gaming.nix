@@ -21,12 +21,14 @@ in
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [
-      mangohud
-      protonup-qt
-      (mkIf cfg.lutris.enable lutris)
-      (mkIf cfg.minecraft.enable prismlauncher)
-    ];
+    environment.systemPackages =
+      with pkgs;
+      [
+        mangohud
+        protonup-qt
+      ]
+      ++ lib.optionals cfg.lutris.enable [ lutris ]
+      ++ lib.optionals cfg.minecraft.enable [ prismlauncher ];
 
     programs.steam = {
       enable = true;
