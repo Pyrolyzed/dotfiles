@@ -71,9 +71,10 @@
       trouble.enable = true;
       servers.nixd = {
         enable = true;
-        init_options = {
+        # options doesn't exist
+        options = {
           nixos.expr = "(builtins.getFlake \"/home/pyro/dotfiles\").nixosConfigurations.${host}.options";
-          home-manager.expr = "(builtins.getFlake \"/home/pyro/dotfiles\").nixosConfigurations.${host}.options.home-manager.users.type.getSubOptions";
+          home-manager.expr = "(builtins.getFlake \"/home/pyro/dotfiles\").nixosConfigurations.${host}.options.home-manager.users.type.getSubOptions []";
         };
       };
     };

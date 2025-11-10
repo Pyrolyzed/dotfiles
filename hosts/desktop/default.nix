@@ -140,6 +140,7 @@ in
     onlyoffice-desktopeditors
     xrandr
     glfw3-minecraft
+    vscode
     xfce.thunar
     wl-clipboard
     grim

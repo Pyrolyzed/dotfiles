@@ -14,7 +14,6 @@ in
   imports = [
     ../../modules/homeManager/zsh.nix
   ];
-
   custom = {
     shell.zsh = {
       enable = true;
