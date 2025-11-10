@@ -72,9 +72,12 @@ in
       lspkind.enable = true;
       trouble.enable = true;
       servers.nixd = {
+        enable = true;
         init_options = {
-          nixos.expr = "(builtins.getFlake (builtins.toString /home/pyro/dotfiles)).nixosConfigurations.desktop.options";
-          home_manager.expr = "(builtins.getFlake (builtins.toString /home/pyro/dotfiles)).nixosConfigurations.desktop.options.home-manager.users.type.getSubOptions []";
+          options = {
+            nixos.expr = "(builtins.getFlake (builtins.toString /home/pyro/dotfiles)).nixosConfigurations.desktop.options";
+            home-manager.expr = "(builtins.getFlake (builtins.toString /home/pyro/dotfiles)).nixosConfigurations.desktop.options.home-manager.users.type.getSubOptions []";
+          };
         };
       };
     };
@@ -102,7 +105,7 @@ in
         treesitter.enable = true;
         # nixfmt-rfc-style
         format.type = "nixfmt";
-        lsp.servers = "nixd";
+        lsp.servers = [ "nixd" ];
       };
       ts.enable = true;
       rust.enable = true;
