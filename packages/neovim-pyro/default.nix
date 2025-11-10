@@ -74,9 +74,7 @@ in
       servers.nixd = {
         init_options = {
           nixos.expr = "(builtins.getFlake (builtins.toString /home/pyro/dotfiles)).nixosConfigurations.desktop.options";
-          # Fuck it.
           home_manager.expr = "(builtins.getFlake (builtins.toString /home/pyro/dotfiles)).nixosConfigurations.desktop.options.home-manager.users.type.getSubOptions []";
-          home-manager.expr = "(builtins.getFlake (builtins.toString /home/pyro/dotfiles)).nixosConfigurations.desktop.options.home-manager.users.type.getSubOptions []";
         };
       };
     };
