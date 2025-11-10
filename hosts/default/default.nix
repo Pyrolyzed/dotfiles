@@ -8,10 +8,6 @@
 {
   nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
 
-  custom = {
-
-  };
-
   home-manager = {
     useUserPackages = true;
     useGlobalPkgs = true;

@@ -21,6 +21,7 @@ let
           system
           host
           user
+          lib
           ;
       };
       modules = [

@@ -4,6 +4,8 @@
   host ? "desktop",
   ...
 }:
+let
+in
 {
   vim = {
     theme = {
@@ -24,11 +26,6 @@
           lookahead = true;
         };
       };
-    };
-
-    assistant.copilot = {
-      enable = true;
-      cmp.enable = true;
     };
 
     navigation = {
@@ -67,14 +64,19 @@
     lsp = {
       enable = true;
       formatOnSave = true;
+      inlayHints.enable = true;
+      otter-nvim.enable = true;
+      lightbulb.enable = true;
+      lspconfig.enable = true;
+      nvim-docs-view.enable = true;
       lspkind.enable = true;
       trouble.enable = true;
       servers.nixd = {
-        enable = true;
-        # options doesn't exist
-        options = {
-          nixos.expr = "(builtins.getFlake \"/home/pyro/dotfiles\").nixosConfigurations.${host}.options";
-          home-manager.expr = "(builtins.getFlake \"/home/pyro/dotfiles\").nixosConfigurations.${host}.options.home-manager.users.type.getSubOptions []";
+        init_options = {
+          nixos.expr = "(builtins.getFlake (builtins.toString /home/pyro/dotfiles)).nixosConfigurations.desktop.options";
+          # Fuck it.
+          home_manager.expr = "(builtins.getFlake (builtins.toString /home/pyro/dotfiles)).nixosConfigurations.desktop.options.home-manager.users.type.getSubOptions []";
+          home-manager.expr = "(builtins.getFlake (builtins.toString /home/pyro/dotfiles)).nixosConfigurations.desktop.options.home-manager.users.type.getSubOptions []";
         };
       };
     };
@@ -102,9 +104,7 @@
         treesitter.enable = true;
         # nixfmt-rfc-style
         format.type = "nixfmt";
-        lsp = {
-          server = "nixd";
-        };
+        lsp.servers = "nixd";
       };
       ts.enable = true;
       rust.enable = true;

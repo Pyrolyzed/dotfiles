@@ -37,7 +37,6 @@
         config.allowUnfree = true;
         inherit system;
       };
-      lib = nixpkgs.lib;
     in
     {
       # nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
@@ -58,8 +57,8 @@
           pkgs
           system
           inputs
-          lib
           ;
+        inherit (nixpkgs) lib;
       };
     };
 }

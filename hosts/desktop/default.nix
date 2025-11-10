@@ -109,6 +109,7 @@ in
     ];
   };
 
+  hardware.i2c.enable = true;
   home-manager = {
     useUserPackages = true;
     useGlobalPkgs = true;
@@ -140,8 +141,10 @@ in
     onlyoffice-desktopeditors
     xrandr
     glfw3-minecraft
+    wlr-randr
     vscode
     xfce.thunar
+    ddcutil
     wl-clipboard
     grim
     arma3-unix-launcher

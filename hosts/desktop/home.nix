@@ -14,6 +14,7 @@ in
   imports = [
     ../../modules/homeManager/zsh.nix
   ];
+
   custom = {
     shell.zsh = {
       enable = true;
@@ -26,6 +27,7 @@ in
       };
     };
   };
+
   programs.zsh.historySubstringSearch = {
     searchDownKey = "$terminfo[kcud1]";
     searchUpKey = "$terminfo[kcuu1]";
