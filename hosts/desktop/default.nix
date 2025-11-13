@@ -24,6 +24,9 @@ in
   };
   systemd.services.NetworkManager-wait-online.enable = false;
 
+  # https://github.com/openzfs/zfs/issues/10891
+  systemd.services.systemd-udev-settle.enable = false;
+
   xdg = {
     portal = {
       enable = true;
@@ -180,6 +183,7 @@ in
     sdl3
     custom.neovim-pyro
     unzip
+    qbittorrent
     nixfmt-rfc-style
     unrar
     cifs-utils
