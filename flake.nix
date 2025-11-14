@@ -4,6 +4,17 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
 
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    import-tree = {
+      url = "github:vic/import-tree";
+    };
+    nixos-grub-themes = {
+      url = "github:jeslie0/nixos-grub-themes";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    systems = {
+      url = "github:nix-systems/default";
+    };
     nvf = {
       url = "github:notashelf/nvf/v0.8";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -29,36 +40,5 @@
     };
   };
 
-  outputs =
-    { self, nixpkgs, ... }@inputs:
-    let
-      system = "x86_64-linux";
-      pkgs = import inputs.nixpkgs {
-        config.allowUnfree = true;
-        inherit system;
-      };
-    in
-    {
-      # nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
-      #   inherit
-      #     pkgs
-      #     system
-      #     ;
-      #   specialArgs = { inherit inputs; };
-      #   modules = [
-      #     ./hosts/desktop
-      #     ./overlays
-      #     inputs.home-manager.nixosModules.default
-      #     #inputs.niri.nixosModules.niri
-      #   ];
-      # };
-      nixosConfigurations = import ./hosts/nixos.nix {
-        inherit
-          pkgs
-          system
-          inputs
-          ;
-        inherit (nixpkgs) lib;
-      };
-    };
+  outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);
 }
