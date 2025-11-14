@@ -77,9 +77,14 @@ in
     enable32Bit = true;
   };
 
-  boot.initrd.kernelModules = [
-    "amdgpu"
-  ];
+  # AMD GPU
+  #boot.initrd.kernelModules = [
+  #  "amdgpu"
+  #];
+
+  # Nvidia GPU
+  services.xserver.videoDrivers = [ "nvidia" ];
+  hardware.nvidia.open = false;
 
   # Enable ZFS
   boot.supportedFilesystems = [
@@ -159,6 +164,7 @@ in
       ];
     })
     libqalculate
+    unigine-valley
     mangohud
     fastfetch
     rofi-calc
