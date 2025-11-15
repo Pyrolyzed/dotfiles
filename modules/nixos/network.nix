@@ -19,7 +19,7 @@
       "192.168.1.120"
       "1.1.1.1"
     ];
-    interfaces.enp9s0 = {
+    interfaces.enp7s0 = {
       ipv4.addresses = [
         {
           address = "192.168.1.114";
@@ -29,7 +29,7 @@
     };
     defaultGateway = {
       address = "192.168.1.1";
-      interface = "enp9s0";
+      interface = "enp7s0";
     };
     firewall.enable = false;
   };

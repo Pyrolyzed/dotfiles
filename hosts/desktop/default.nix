@@ -174,6 +174,7 @@ in
     kdePackages.kdeconnect-kde
     wikiman
     slurp
+    foliate
     p7zip
     xwayland-satellite
     fastfetch
