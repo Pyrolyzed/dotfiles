@@ -64,7 +64,6 @@ in
   services.displayManager.sddm.enable = true;
   services.displayManager.sddm.wayland.enable = true;
 
-  security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
     pulse.enable = true;
@@ -77,14 +76,17 @@ in
     enable32Bit = true;
   };
 
+  # ZFS not compatible with 6.17
+  #boot.kernelPackages = pkgs.linuxPackages_zen;
+
   # AMD GPU
-  #boot.initrd.kernelModules = [
-  #  "amdgpu"
-  #];
+  boot.initrd.kernelModules = [
+    "amdgpu"
+  ];
 
   # Nvidia GPU
-  services.xserver.videoDrivers = [ "nvidia" ];
-  hardware.nvidia.open = false;
+  #services.xserver.videoDrivers = [ "nvidia" ];
+  #hardware.nvidia.open = false;
 
   # Enable ZFS
   boot.supportedFilesystems = [
@@ -92,6 +94,15 @@ in
   ];
   # Auto mount
   boot.zfs.extraPools = [ "storage" ];
+
+  # Gaming time
+  boot.kernel.sysctl = {
+    "fs.file-max" = 2097152;
+    "vm.max_map_count" = 2147483642;
+  };
+  security.rtkit.enable = true;
+
+  documentation.man.generateCaches = true;
 
   fileSystems."/home/pyro/NAS" = {
     device = "//192.168.1.200/Storage";
@@ -144,12 +155,12 @@ in
     ffmpeg-full
     clonehero
     filezilla
-    man-pages
-    man-pages-posix
     onlyoffice-desktopeditors
     xrandr
     glfw3-minecraft
     wlr-randr
+    man-pages
+    man-pages-posix
     vscode
     xfce.thunar
     ddcutil

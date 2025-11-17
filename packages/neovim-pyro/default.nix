@@ -104,7 +104,7 @@ in
         enable = true;
         treesitter.enable = true;
         # nixfmt-rfc-style
-        format.type = "nixfmt";
+        format.type = [ "nixfmt" ];
         lsp.servers = [ "nixd" ];
       };
       ts.enable = true;
