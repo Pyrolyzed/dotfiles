@@ -10,8 +10,9 @@ in
   vim = {
     theme = {
       enable = true;
-      name = "catppuccin";
-      style = "mocha";
+      transparent = true;
+      name = "everforest";
+      style = "hard";
     };
 
     treesitter.textobjects = {

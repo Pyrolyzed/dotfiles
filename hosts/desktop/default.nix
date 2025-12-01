@@ -76,6 +76,7 @@ in
     enable32Bit = true;
   };
 
+  xdg.icons.enable = true;
   # ZFS not compatible with 6.17
   #boot.kernelPackages = pkgs.linuxPackages_zen;
 
@@ -138,19 +139,28 @@ in
     };
   };
 
+  hardware.new-lg4ff.enable = true;
+
   programs.niri.enable = true;
+  services.desktopManager.cosmic.enable = true;
 
   fonts.packages = with pkgs; [
     noto-fonts
     noto-fonts-cjk-sans
     poppins
     nerd-fonts.caskaydia-cove
+    iosevka
+    rubik
+    overpass
   ];
 
   environment.systemPackages = with pkgs; [
     manix
     neovim
     steamtinkerlaunch
+    adw-gtk3
+    kdePackages.qt6ct
+    gnome-themes-extra
     python314
     ffmpeg-full
     clonehero
@@ -175,6 +185,9 @@ in
       ];
     })
     libqalculate
+    rusty-path-of-building
+    obs-studio
+    appimage-run
     unigine-valley
     mangohud
     fastfetch
@@ -209,13 +222,13 @@ in
     kitty
     copyq
     git
-    dunst
     vesktop
     lsd
     gamescope
     labwc
     obsidian
     zfs
+    oversteer
     inputs.zen-browser.packages."${system}".default
   ];
   services.openssh.enable = true;

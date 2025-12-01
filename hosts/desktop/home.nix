@@ -13,8 +13,9 @@ in
 {
   imports = [
     ../../modules/homeManager/zsh.nix
+    inputs.dms.homeModules.dankMaterialShell.default
   ];
-
+  programs.dankMaterialShell.enable = true;
   custom = {
     shell.zsh = {
       enable = true;
@@ -28,31 +29,37 @@ in
     };
   };
 
+  programs.direnv = {
+    enable = true;
+    enableZshIntegration = true;
+    nix-direnv.enable = true;
+  };
+
   programs.zsh.historySubstringSearch = {
     searchDownKey = "$terminfo[kcud1]";
     searchUpKey = "$terminfo[kcuu1]";
   };
 
-  gtk = {
-    enable = true;
-    theme = {
-      name = "Adwaita-dark";
-      package = pkgs.gnome-themes-extra;
-    };
-    iconTheme = {
-      package = pkgs.adwaita-icon-theme;
-      name = "Adwaita-dark";
-    };
-  };
+  #gtk = {
+  #  enable = true;
+  #  theme = {
+  #    name = "Adwaita-dark";
+  #    package = pkgs.gnome-themes-extra;
+  #  };
+  #  iconTheme = {
+  #    package = pkgs.adwaita-icon-theme;
+  #    name = "Adwaita-dark";
+  #  };
+  #};
 
-  qt = {
-    enable = true;
-    style = {
-      name = "adwaita-dark";
-      package = pkgs.adwaita-qt6;
-    };
-    platformTheme.name = "qtct";
-  };
+  #qt = {
+  #  enable = true;
+  #  style = {
+  #    name = "adwaita-dark";
+  #    package = pkgs.adwaita-qt6;
+  #  };
+  #  platformTheme.name = "qtct";
+  #};
 
   home.pointerCursor = {
     gtk.enable = true;
@@ -128,20 +135,20 @@ in
 
   home.stateVersion = "25.05";
   programs.home-manager.enable = true;
-  programs.kitty.enable = true;
-  programs.kitty.settings = {
-    confirm_os_window_close = 0;
-    paste_actions = "filter";
-    window_padding_width = 10;
-    window_padding_height = 5;
-    enable_audio_bell = false;
-    #background_opacity = 0.8;
-  };
+  #programs.kitty.enable = true;
+  # programs.kitty.settings = {
+  #   confirm_os_window_close = 0;
+  #   paste_actions = "filter";
+  #   window_padding_width = 10;
+  #   window_padding_height = 5;
+  #   enable_audio_bell = false;
+  #   #background_opacity = 0.8;
+  # };
 
-  programs.kitty.font = {
-    size = 16;
-    name = "Caskaydia Cove NerdFont Mono";
-  };
+  #programs.kitty.font = {
+  #  size = 16;
+  #  name = "Caskaydia Cove NerdFont Mono";
+  #};
   #wayland.windowManager.hyprland.enable = true;
 
   home.sessionVariables = {
@@ -149,6 +156,8 @@ in
     NIXOS_OZONE_WL = 1;
     MANPAGER = "nvim +Man!";
     QT_QPA_PLATFORM = "wayland";
+    QT_QPA_PLATFORMTHEME = "gtk3";
+    QT_QPA_PLATFORMTHEME_QT6 = "gtk3";
   };
 
   #wayland.windowManager.hyprland.settings = {
