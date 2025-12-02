@@ -8,13 +8,9 @@ let
 in
 {
   vim = {
-    theme = {
-      enable = true;
-      transparent = true;
-      name = "everforest";
-      style = "hard";
-    };
-
+    additionalRuntimePaths = [
+      "~/.config/nvim"
+    ];
     treesitter.textobjects = {
       enable = true;
       setupOpts = {
@@ -85,13 +81,18 @@ in
 
     git.enable = true;
     lazy.enable = true;
+    luaConfigRC.myconfig = ''
+      require("matugentwo")
+    '';
     notes.todo-comments.enable = true;
 
     ui = {
-      colorizer.enable = true;
+      #colorizer.enable = true;
       smartcolumn.enable = true;
     };
-
+    startPlugins = [
+      "base16"
+    ];
     languages = {
       enableFormat = true;
       enableTreesitter = true;
