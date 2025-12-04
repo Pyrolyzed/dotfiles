@@ -26,6 +26,8 @@ in
       [
         mangohud
         protonup-qt
+        protontricks
+        winetricks
       ]
       ++ lib.optionals cfg.lutris.enable [ lutris ]
       ++ lib.optionals cfg.minecraft.enable [ prismlauncher ];

@@ -154,13 +154,13 @@ in
     overpass
   ];
 
+  programs.dconf.enable = true;
   environment.systemPackages = with pkgs; [
     manix
     neovim
     steamtinkerlaunch
     adw-gtk3
     kdePackages.qt6ct
-    gnome-themes-extra
     python314
     ffmpeg-full
     clonehero
@@ -195,6 +195,7 @@ in
     rofi-file-browser
     rofi-power-menu
     tealdeer
+    umu-launcher
     kdePackages.kdeconnect-kde
     wikiman
     slurp

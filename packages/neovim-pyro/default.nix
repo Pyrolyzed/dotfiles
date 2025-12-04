@@ -8,9 +8,9 @@ let
 in
 {
   vim = {
-    additionalRuntimePaths = [
-      "~/.config/nvim"
-    ];
+    #additionalRuntimePaths = [
+    #  "~/.config/nvim"
+    #];
     treesitter.textobjects = {
       enable = true;
       setupOpts = {
@@ -25,6 +25,11 @@ in
       };
     };
 
+    theme = {
+      enable = true;
+      name = "catppuccin";
+      style = "mocha";
+    };
     navigation = {
       harpoon = {
         enable = true;
@@ -54,6 +59,7 @@ in
     };
 
     statusline.lualine.enable = true;
+    #statusline.lualine.theme = "base16";
     telescope.enable = true;
     autocomplete.nvim-cmp.enable = true;
     autopairs.nvim-autopairs.enable = true;
@@ -81,18 +87,18 @@ in
 
     git.enable = true;
     lazy.enable = true;
-    luaConfigRC.myconfig = ''
-      require("matugentwo")
-    '';
+    #luaConfigRC.myconfig = ''
+    #  require("matugentwo")
+    #'';
     notes.todo-comments.enable = true;
 
     ui = {
       #colorizer.enable = true;
       smartcolumn.enable = true;
     };
-    startPlugins = [
-      "base16"
-    ];
+    #startPlugins = [
+    #  "base16"
+    #];
     languages = {
       enableFormat = true;
       enableTreesitter = true;
