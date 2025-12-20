@@ -24,11 +24,13 @@
           loader = {
             grub = {
               enable = true;
-              efiSupport = true;
+              efiSupport = lib.mkDefault true;
               devices = config.custom.boot.devices;
               efiInstallAsRemovable = config.custom.boot.removable;
               theme = inputs.nixos-grub-themes.packages.${system}.nixos;
             };
+            # Infinite boot screen
+            timeout = lib.mkDefault null;
             efi.canTouchEfiVariables = true;
           };
         };

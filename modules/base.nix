@@ -61,6 +61,11 @@ in
         defaultUserShell = pkgs.zsh;
       };
 
+      boot.kernel.sysctl = {
+        "fs.file-max" = 2097152;
+        "vm.max_map_count" = 214748342;
+      };
+
       nix = {
         settings = {
           trusted-users = [
@@ -82,9 +87,13 @@ in
         gc = {
           automatic = true;
           dates = "weekly";
-          options = "--delete-older-than 30d";
+          options = "--delete-older-than 14d";
         };
       };
+
+      documentation.man.enable = true;
+      # Slow, but needed for apropos
+      documentation.man.generateCaches = true;
 
       environment = {
         shells = [ pkgs.zsh ];
@@ -93,7 +102,6 @@ in
           sops
           dbus
           hdparm
-
           btop
           nh
           alejandra
@@ -103,11 +111,14 @@ in
           p7zip
           openssl
           usbutils
+          fastfetch
+          # TODO: Wrapped/custom package?
+          neovim
         ];
-
         sessionVariables = {
           EDITOR = "nvim";
           VISUAL = "nvim";
+          MANPAGER = "nvim +Man!";
         };
       };
     };

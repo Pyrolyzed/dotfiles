@@ -6,6 +6,13 @@
   flake.modules.nixos.desktop =
     { pkgs, ... }:
     {
+      imports = with config.flake.modules.nixos; [
+        gaming
+        grub
+        amd
+      ];
 
+      services.displayManager.cosmic-greeter.enable = true;
+      services.desktopManager.cosmic.enable = true;
     };
 }
