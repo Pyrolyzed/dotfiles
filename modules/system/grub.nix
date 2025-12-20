@@ -1,4 +1,7 @@
-{ inputs, ... }:
+{ inputs, config, ... }:
+let
+  inherit (config) flake;
+in
 {
   flake.modules.nixos.grub =
     {

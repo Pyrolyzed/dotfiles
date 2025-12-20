@@ -1,5 +1,6 @@
 { inputs, config, ... }:
 let
+  inherit (config) flake;
   settings = config.flake.settings;
 in
 {
