@@ -1,12 +1,15 @@
 { config, ... }:
+let
+  inherit (config) flake;
+in
 {
   flake.settings = {
-    hostId = "123aa";
+    hostId = "742b7683";
   };
   flake.modules.nixos.desktop =
     { pkgs, ... }:
     {
-      imports = with config.flake.modules.nixos; [
+      imports = with flake.modules.nixos; [
         gaming
         grub
         amd

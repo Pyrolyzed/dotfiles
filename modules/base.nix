@@ -1,17 +1,16 @@
 { inputs, config, ... }:
 let
   inherit (config) flake;
-  settings = config.flake.settings;
+  settings = flake.settings;
 in
 {
   flake.modules.nixos.base =
     {
-      config,
       pkgs,
       ...
     }:
     {
-      imports = with config.flake.modules.nixos; [
+      imports = with flake.modules.nixos; [
         network
       ];
 
@@ -61,7 +60,7 @@ in
         };
         defaultUserShell = pkgs.zsh;
       };
-
+      programs.zsh.enable = true;
       boot.kernel.sysctl = {
         "fs.file-max" = 2097152;
         "vm.max_map_count" = 214748342;
