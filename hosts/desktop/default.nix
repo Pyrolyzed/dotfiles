@@ -188,6 +188,7 @@ in
     rusty-path-of-building
     obs-studio
     appimage-run
+
     unigine-valley
     mangohud
     fastfetch
@@ -195,6 +196,7 @@ in
     rofi-file-browser
     rofi-power-menu
     tealdeer
+    freetype
     umu-launcher
     kdePackages.kdeconnect-kde
     wikiman

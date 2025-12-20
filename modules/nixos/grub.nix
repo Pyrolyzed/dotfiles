@@ -13,5 +13,6 @@
       useOSProber = true;
       theme = "${pkgs.custom.catppuccin-grub-patched}";
     };
+    timeout = null;
   };
 }

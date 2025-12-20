@@ -2,6 +2,7 @@
   pkgs,
   lib,
   inputs,
+  config,
   ...
 }:
 
@@ -15,7 +16,10 @@ in
     ../../modules/homeManager/zsh.nix
     inputs.dms.homeModules.dankMaterialShell.default
   ];
-  programs.dankMaterialShell.enable = true;
+  programs.dankMaterialShell = {
+    enable = true;
+    enableDynamicTheming = false;
+  };
   custom = {
     shell.zsh = {
       enable = true;
@@ -39,19 +43,18 @@ in
     searchDownKey = "$terminfo[kcud1]";
     searchUpKey = "$terminfo[kcuu1]";
   };
-
-  #gtk = {
-  #  enable = true;
-  #  theme = {
-  #    name = "Adwaita-dark";
-  #    package = pkgs.gnome-themes-extra;
+  #  gtk = {
+  #    enable = true;
+  #    theme = {
+  #      name = "Matugen";
+  #      package = inputs.matugen.packages.${pkgs.stdenv.hostPlatform.system}.default;
+  #    };
+  #    iconTheme = {
+  #      package = pkgs.adwaita-icon-theme;
+  #      name = "Adwaita-dark";
+  #    };
   #  };
-  #  iconTheme = {
-  #    package = pkgs.adwaita-icon-theme;
-  #    name = "Adwaita-dark";
-  #  };
-  #};
-
+  #
   #qt = {
   #  enable = true;
   #  style = {
@@ -156,8 +159,8 @@ in
     NIXOS_OZONE_WL = 1;
     MANPAGER = "nvim +Man!";
     QT_QPA_PLATFORM = "wayland";
-    QT_QPA_PLATFORMTHEME = "gtk3";
-    QT_QPA_PLATFORMTHEME_QT6 = "gtk3";
+    QT_QPA_PLATFORMTHEME = "qt6ct";
+    QT_QPA_PLATFORMTHEME_QT6 = "qt6ct";
   };
 
   #wayland.windowManager.hyprland.settings = {
