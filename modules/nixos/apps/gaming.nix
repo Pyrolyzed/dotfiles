@@ -1,6 +1,7 @@
 {
   lib,
   pkgs,
+  pkgs-stable,
   config,
   ...
 }:
@@ -26,11 +27,11 @@ in
       [
         mangohud
         protonup-qt
-        protontricks
         winetricks
       ]
       ++ lib.optionals cfg.lutris.enable [ lutris ]
-      ++ lib.optionals cfg.minecraft.enable [ prismlauncher ];
+      ++ lib.optionals cfg.minecraft.enable [ prismlauncher ]
+      ++ [ pkgs-stable.protontricks ];
     programs.steam = {
       enable = true;
       remotePlay.openFirewall = true;

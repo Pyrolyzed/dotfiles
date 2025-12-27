@@ -3,7 +3,11 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-
+    nixpkgs-stable.url = "github:nixos/nixpkgs?ref=nixos-25.05";
+    eden-emu = {
+      url = "github:grantimatter/eden-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nvf = {
       url = "github:notashelf/nvf/v0.8";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -39,6 +43,10 @@
         config.allowUnfree = true;
         inherit system;
       };
+      pkgs-stable = import inputs.nixpkgs-stable {
+        config.allowUnfree = true;
+        inherit system;
+      };
     in
     {
       # nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
@@ -57,6 +65,7 @@
       nixosConfigurations = import ./hosts/nixos.nix {
         inherit
           pkgs
+          pkgs-stable
           system
           inputs
           ;

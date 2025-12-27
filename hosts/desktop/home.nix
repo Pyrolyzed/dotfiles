@@ -43,18 +43,18 @@ in
     searchDownKey = "$terminfo[kcud1]";
     searchUpKey = "$terminfo[kcuu1]";
   };
-  #  gtk = {
-  #    enable = true;
-  #    theme = {
-  #      name = "Matugen";
-  #      package = inputs.matugen.packages.${pkgs.stdenv.hostPlatform.system}.default;
-  #    };
-  #    iconTheme = {
-  #      package = pkgs.adwaita-icon-theme;
-  #      name = "Adwaita-dark";
-  #    };
-  #  };
-  #
+  gtk = {
+    enable = true;
+    #theme = {
+    #  name = "Matugen";
+    #  package = inputs.matugen.packages.${pkgs.stdenv.hostPlatform.system}.default;
+    #};
+    iconTheme = {
+      package = pkgs.adwaita-icon-theme;
+      name = "Adwaita";
+    };
+  };
+
   #qt = {
   #  enable = true;
   #  style = {
@@ -66,8 +66,6 @@ in
 
   home.pointerCursor = {
     gtk.enable = true;
-    hyprcursor.enable = true;
-    hyprcursor.size = 24;
     x11.enable = true;
     x11.defaultCursor = "left_ptr";
     package = pkgs.bibata-cursors;

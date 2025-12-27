@@ -13,7 +13,12 @@ in
     ../../modules/nixos/apps/gaming.nix
     ../../modules/nixos/apps/spicetify.nix
     ../../modules/nixos/network.nix
+    # Eden emulator
+    inputs.eden-emu.nixosModules.default
   ];
+
+  # Eden emulator
+  programs.eden.enable = true;
 
   custom = {
     apps.gaming = {
@@ -62,7 +67,8 @@ in
   services.printing.enable = true;
 
   services.displayManager.sddm.enable = true;
-  services.displayManager.sddm.wayland.enable = true;
+  #  services.displayManager.sddm.wayland.enable = true;
+  services.xserver.enable = true;
 
   services.pipewire = {
     enable = true;
@@ -77,8 +83,7 @@ in
   };
 
   xdg.icons.enable = true;
-  # ZFS not compatible with 6.17
-  #boot.kernelPackages = pkgs.linuxPackages_zen;
+  boot.kernelPackages = pkgs.linuxPackages_zen;
 
   # AMD GPU
   boot.initrd.kernelModules = [
@@ -95,6 +100,7 @@ in
   ];
   # Auto mount
   boot.zfs.extraPools = [ "storage" ];
+  boot.zfs.package = pkgs.zfs_2_4;
 
   # Gaming time
   boot.kernel.sysctl = {
@@ -104,6 +110,14 @@ in
   security.rtkit.enable = true;
 
   documentation.man.generateCaches = true;
+
+  # Sunshine game streaming
+  services.sunshine = {
+    enable = true;
+    capSysAdmin = true;
+    openFirewall = true;
+    autoStart = true;
+  };
 
   fileSystems."/home/pyro/NAS" = {
     device = "//192.168.1.200/Storage";
@@ -142,7 +156,7 @@ in
   hardware.new-lg4ff.enable = true;
 
   programs.niri.enable = true;
-  services.desktopManager.cosmic.enable = true;
+  #services.desktopManager.cosmic.enable = true;
 
   fonts.packages = with pkgs; [
     noto-fonts
@@ -154,9 +168,12 @@ in
     overpass
   ];
 
+  programs.gpu-screen-recorder.enable = true;
+  programs.gpu-screen-recorder.package = pkgs.gpu-screen-recorder;
   programs.dconf.enable = true;
   environment.systemPackages = with pkgs; [
     manix
+    gpu-screen-recorder
     neovim
     steamtinkerlaunch
     adw-gtk3
@@ -168,8 +185,10 @@ in
     onlyoffice-desktopeditors
     xrandr
     glfw3-minecraft
+    azahar
     wlr-randr
     man-pages
+    moonlight-qt
     man-pages-posix
     vscode
     xfce.thunar
@@ -186,9 +205,9 @@ in
     })
     libqalculate
     rusty-path-of-building
+    gpu-screen-recorder-gtk
     obs-studio
     appimage-run
-
     unigine-valley
     mangohud
     fastfetch
@@ -231,6 +250,8 @@ in
     labwc
     obsidian
     zfs
+    # morrowind
+    openmw
     oversteer
     inputs.zen-browser.packages."${system}".default
   ];
