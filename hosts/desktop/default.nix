@@ -111,6 +111,10 @@ in
 
   documentation.man.generateCaches = true;
 
+  services.tailscale = {
+    enable = true;
+    openFirewall = true;
+  };
   # Sunshine game streaming
   services.sunshine = {
     enable = true;
@@ -156,7 +160,7 @@ in
   hardware.new-lg4ff.enable = true;
 
   programs.niri.enable = true;
-  #services.desktopManager.cosmic.enable = true;
+  services.desktopManager.cosmic.enable = true;
 
   fonts.packages = with pkgs; [
     noto-fonts
