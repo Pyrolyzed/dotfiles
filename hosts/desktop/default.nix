@@ -99,7 +99,7 @@ in
     "zfs"
   ];
   # Auto mount
-  boot.zfs.extraPools = [ "storage" ];
+  #boot.zfs.extraPools = [ "storage" ];
   boot.zfs.package = pkgs.zfs_2_4;
 
   # Gaming time
@@ -195,6 +195,7 @@ in
     moonlight-qt
     man-pages-posix
     vscode
+    pegasus-frontend
     xfce.thunar
     ddcutil
     wl-clipboard
@@ -212,10 +213,10 @@ in
     gpu-screen-recorder-gtk
     obs-studio
     appimage-run
-    unigine-valley
     mangohud
     fastfetch
     rofi-calc
+    vulkan-tools
     rofi-file-browser
     rofi-power-menu
     tealdeer

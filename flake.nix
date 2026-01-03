@@ -2,7 +2,8 @@
   description = "NixOS configuration flake";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    #TODO: Change
+    nixpkgs.url = "github:nixos/nixpkgs/pull/476347/head";
     nixpkgs-stable.url = "github:nixos/nixpkgs?ref=nixos-25.05";
     eden-emu = {
       url = "github:grantimatter/eden-flake";
