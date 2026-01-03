@@ -9,9 +9,10 @@
       url = "github:grantimatter/eden-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     nvf = {
       url = "github:notashelf/nvf/v0.8";
-      inputs.nixpkgs.follows = "nixpkgs";
+      #inputs.nixpkgs.follows = "nixpkgs";
     };
 
     niri-scratchpad-flake = {
