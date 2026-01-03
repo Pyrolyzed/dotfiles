@@ -197,6 +197,7 @@ in
     vscode
     pegasus-frontend
     xfce.thunar
+    nautilus
     ddcutil
     wl-clipboard
     grim
