@@ -14,12 +14,16 @@ in
 {
   imports = [
     ../../modules/homeManager/zsh.nix
-    inputs.dms.homeModules.dankMaterialShell.default
+    inputs.noctalia.homeModules.default
+    #inputs.dms.homeModules.dankMaterialShell.default
   ];
-  programs.dankMaterialShell = {
+  programs.noctalia-shell = {
     enable = true;
-    enableDynamicTheming = false;
   };
+  #programs.dankMaterialShell = {
+  #enable = true;
+  #enableDynamicTheming = false;
+  #};
   custom = {
     shell.zsh = {
       enable = true;
@@ -43,18 +47,18 @@ in
     searchDownKey = "$terminfo[kcud1]";
     searchUpKey = "$terminfo[kcuu1]";
   };
-  gtk = {
-    enable = true;
-    #theme = {
-    #  name = "Matugen";
-    #  package = inputs.matugen.packages.${pkgs.stdenv.hostPlatform.system}.default;
-    #};
-    iconTheme = {
-      package = pkgs.adwaita-icon-theme;
-      name = "Adwaita";
-    };
-  };
-
+  #  gtk = {
+  #    enable = true;
+  #    #theme = {
+  #    #  name = "Matugen";
+  #    #  package = inputs.matugen.packages.${pkgs.stdenv.hostPlatform.system}.default;
+  #    #};
+  #    iconTheme = {
+  #      package = pkgs.adwaita-icon-theme;
+  #      name = "Adwaita";
+  #    };
+  #  };
+  #
   #qt = {
   #  enable = true;
   #  style = {

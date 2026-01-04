@@ -3,6 +3,7 @@
   inputs,
   pkgs,
   pkgs-stable,
+  pkgs-unstable,
   system,
   user ? "pyro",
   ...
@@ -24,6 +25,7 @@ let
           user
           lib
           pkgs-stable
+          pkgs-unstable
           ;
       };
       modules = [

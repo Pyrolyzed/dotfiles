@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/c0b0e0fddf73fd517c3471e546c0df87a42d53f4";
     nixpkgs-stable.url = "github:nixos/nixpkgs?ref=nixos-25.05";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     eden-emu = {
       url = "github:grantimatter/eden-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -33,6 +34,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    matugen.url = "github:/InioX/Matugen";
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     dms.url = "github:AvengeMedia/DankMaterialShell";
   };
 
@@ -45,6 +51,10 @@
         inherit system;
       };
       pkgs-stable = import inputs.nixpkgs-stable {
+        config.allowUnfree = true;
+        inherit system;
+      };
+      pkgs-unstable = import inputs.nixpkgs-unstable {
         config.allowUnfree = true;
         inherit system;
       };
@@ -67,6 +77,7 @@
         inherit
           pkgs
           pkgs-stable
+          pkgs-unstable
           system
           inputs
           ;

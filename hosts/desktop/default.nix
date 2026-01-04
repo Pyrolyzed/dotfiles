@@ -1,5 +1,6 @@
 {
   pkgs,
+  pkgs-unstable,
   inputs,
   ...
 }:
@@ -15,8 +16,10 @@ in
     ../../modules/nixos/network.nix
     # Eden emulator
     inputs.eden-emu.nixosModules.default
+    inputs.noctalia.nixosModules.default
   ];
 
+  services.noctalia-shell.enable = true;
   # Eden emulator
   programs.eden.enable = true;
 
@@ -80,6 +83,8 @@ in
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
+    package = pkgs-unstable.mesa;
+    #package32 = pkgs-unstable.mesa;
   };
 
   xdg.icons.enable = true;
@@ -178,6 +183,7 @@ in
   environment.systemPackages = with pkgs; [
     manix
     gpu-screen-recorder
+    inputs.matugen.packages."x86_64-linux".default
     neovim
     steamtinkerlaunch
     adw-gtk3
@@ -189,13 +195,14 @@ in
     onlyoffice-desktopeditors
     xrandr
     glfw3-minecraft
-    azahar
     wlr-randr
     man-pages
     moonlight-qt
     man-pages-posix
     vscode
+    fuzzel
     pegasus-frontend
+    skyscraper
     xfce.thunar
     nautilus
     ddcutil
@@ -215,6 +222,7 @@ in
     obs-studio
     appimage-run
     mangohud
+    pywalfox-native
     fastfetch
     rofi-calc
     vulkan-tools
