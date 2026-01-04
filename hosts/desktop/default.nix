@@ -16,10 +16,10 @@ in
     ../../modules/nixos/network.nix
     # Eden emulator
     inputs.eden-emu.nixosModules.default
-    inputs.noctalia.nixosModules.default
+    #  inputs.noctalia.nixosModules.default
   ];
 
-  services.noctalia-shell.enable = true;
+  #  services.noctalia-shell.enable = true;
   # Eden emulator
   programs.eden.enable = true;
 
@@ -104,7 +104,7 @@ in
     "zfs"
   ];
   # Auto mount
-  #boot.zfs.extraPools = [ "storage" ];
+  boot.zfs.extraPools = [ "storage" ];
   boot.zfs.package = pkgs.zfs_2_4;
 
   # Gaming time
@@ -187,6 +187,7 @@ in
     neovim
     steamtinkerlaunch
     adw-gtk3
+    nwg-look
     kdePackages.qt6ct
     python314
     ffmpeg-full
