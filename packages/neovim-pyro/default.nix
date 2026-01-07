@@ -8,9 +8,9 @@ let
 in
 {
   vim = {
-    #additionalRuntimePaths = [
-    #  "~/.config/nvim"
-    #];
+    additionalRuntimePaths = [
+      "~/.config/nvim"
+    ];
     treesitter.textobjects = {
       enable = true;
       setupOpts = {
@@ -27,8 +27,8 @@ in
 
     theme = {
       enable = true;
-      name = "catppuccin";
-      style = "mocha";
+      name = "base16";
+      base16-colors = builtins.fromJSON (builtins.readFile ./neovim-colors.json);
     };
     navigation = {
       harpoon = {
@@ -76,10 +76,11 @@ in
       trouble.enable = true;
       servers.nixd = {
         enable = true;
-        init_options = {
+        settings.nixd = {
+          nixpkgs.expr = "import (builtins.getFlake (builtins.toString./.)).inputs.nixpkgs {}";
           options = {
-            nixos.expr = "(builtins.getFlake (builtins.toString /home/pyro/dotfiles)).nixosConfigurations.desktop.options";
-            home-manager.expr = "(builtins.getFlake (builtins.toString /home/pyro/dotfiles)).nixosConfigurations.desktop.options.home-manager.users.type.getSubOptions []";
+            nixos.expr = "(builtins.getFlake (builtins.toString ./.)).nixosConfigurations.desktop.options";
+            home-manager.expr = "(builtins.getFlake (builtins.toString ./.)).nixosConfigurations.desktop.options.home-manager.users.type.getSubOptions []";
           };
         };
       };
@@ -87,18 +88,17 @@ in
 
     git.enable = true;
     lazy.enable = true;
-    #luaConfigRC.myconfig = ''
-    #  require("matugentwo")
-    #'';
+
+    luaConfigRC.myconfig = ''
+      require("neovim-colors")
+    '';
+
     notes.todo-comments.enable = true;
 
     ui = {
       #colorizer.enable = true;
       smartcolumn.enable = true;
     };
-    #startPlugins = [
-    #  "base16"
-    #];
     languages = {
       enableFormat = true;
       enableTreesitter = true;
