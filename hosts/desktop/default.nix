@@ -184,11 +184,14 @@ in
     manix
     gpu-screen-recorder
     inputs.matugen.packages."x86_64-linux".default
-    neovim
     steamtinkerlaunch
     adw-gtk3
     nwg-look
     kdePackages.qt6ct
+#    (python314.withPackages (python-pkgs: with python314Packages; [
+#      pywal
+#      watchdog
+#    ]))
     python314
     ffmpeg-full
     clonehero
@@ -218,6 +221,8 @@ in
       ];
     })
     libqalculate
+    python313Packages.pywal
+    python313Packages.watchdog
     rusty-path-of-building
     gpu-screen-recorder-gtk
     obs-studio
@@ -249,7 +254,7 @@ in
     protonup-qt
     bat
     sdl3
-    custom.neovim-pyro
+    #custom.neovim-pyro
     unzip
     qbittorrent
     nixfmt-rfc-style
