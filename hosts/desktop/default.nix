@@ -187,11 +187,8 @@ in
     steamtinkerlaunch
     adw-gtk3
     nwg-look
+    neovim
     kdePackages.qt6ct
-#    (python314.withPackages (python-pkgs: with python314Packages; [
-#      pywal
-#      watchdog
-#    ]))
     python314
     ffmpeg-full
     clonehero
@@ -254,7 +251,7 @@ in
     protonup-qt
     bat
     sdl3
-    #custom.neovim-pyro
+    custom.neovim-pyro
     unzip
     qbittorrent
     nixfmt-rfc-style

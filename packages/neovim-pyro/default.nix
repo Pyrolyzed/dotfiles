@@ -27,8 +27,9 @@ in
 
     theme = {
       enable = true;
-      name = "base16";
-      base16-colors = builtins.fromJSON (builtins.readFile ./neovim-colors.json);
+      name = "catppuccin";
+      style = "mocha";
+      #base16-colors = builtins.fromJSON (builtins.readFile ./neovim-colors.json);
     };
     navigation = {
       harpoon = {

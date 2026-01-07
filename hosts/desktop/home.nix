@@ -15,32 +15,9 @@ in
   imports = [
     ../../modules/homeManager/zsh.nix
     inputs.noctalia.homeModules.default
-    inputs.nix4nvchad.homeManagerModule
     #inputs.dms.homeModules.dankMaterialShell.default
   ];
 
-  programs.nvchad = {
-    enable = true;
-    backup = false;
-    extraPackages = with pkgs; [
-      nixd
-      nodePackages.bash-language-server
-    ];
-    extraConfig = ''
-      vim.lsp.enable("nixd")
-      os.execute("python ~/.config/neovim/pywal/chadwal.py &> /dev/null &")
-
-      local autocmd = vim.api.nvim_create_autocmd
-
-      autocmd("Signal", {
-        pattern = "SIGUSR1",
-        callback = function()
-          require('nvchad.utils').reload()
-        end
-      })
-    '';
-    hm-activation = true;
-  };
   programs.noctalia-shell = {
     enable = true;
   };
