@@ -90,9 +90,9 @@ in
     git.enable = true;
     lazy.enable = true;
 
-    luaConfigRC.myconfig = ''
-      require("neovim-colors")
-    '';
+    # luaConfigRC.myconfig = ''
+    #   require("neovim-colors")
+    # '';
 
     notes.todo-comments.enable = true;
 
