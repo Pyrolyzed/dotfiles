@@ -2,6 +2,7 @@
   pkgs,
   pkgs-unstable,
   inputs,
+  lib,
   ...
 }:
 
@@ -16,10 +17,10 @@ in
     ../../modules/nixos/network.nix
     # Eden emulator
     inputs.eden-emu.nixosModules.default
-    #  inputs.noctalia.nixosModules.default
+    inputs.noctalia.nixosModules.default
   ];
 
-  #  services.noctalia-shell.enable = true;
+  services.noctalia-shell.enable = true;
   # Eden emulator
   programs.eden.enable = true;
 
@@ -31,10 +32,18 @@ in
     };
   };
   systemd.services.NetworkManager-wait-online.enable = false;
-
+  services.udev.packages = [
+    (pkgs.writeTextFile {
+      name = "udev-hidapi";
+      text = ''
+        KERNEL=="hidraw*", TAG+="uaccess", SUBSYSTEM=="hidraw", GROUP="hidraw", MODE="0660"
+      '';
+      destination = "/etc/udev/rules.d/69-hid.rules";
+    })
+  ];
+  users.groups.hidraw = { };
   # https://github.com/openzfs/zfs/issues/10891
   systemd.services.systemd-udev-settle.enable = false;
-
   xdg = {
     portal = {
       enable = true;
@@ -114,8 +123,6 @@ in
   };
   security.rtkit.enable = true;
 
-  documentation.man.generateCaches = true;
-
   services.tailscale = {
     enable = true;
     openFirewall = true;
@@ -149,6 +156,7 @@ in
     extraGroups = [
       "networkmanager"
       "wheel"
+      "hidraw"
     ];
   };
 
@@ -202,6 +210,7 @@ in
     man-pages-posix
     vscode
     fuzzel
+    (import ../../packages/yarc.nix)
     pegasus-frontend
     skyscraper
     xfce.thunar
@@ -270,6 +279,9 @@ in
     # morrowind
     openmw
     oversteer
+    hidapi
+    udev
+    libuv
     inputs.zen-browser.packages."${system}".default
   ];
   services.openssh.enable = true;

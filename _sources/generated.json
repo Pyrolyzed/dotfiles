@@ -1,0 +1,17 @@
+{
+    "yarc": {
+        "cargoLocks": null,
+        "date": null,
+        "extract": null,
+        "name": "yarc",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-/RVbCdQlLU9SXXSUGY2pEs2Qgbwts023U8qYFqx6oQ4=",
+            "type": "url",
+            "url": "https://github.com/YARC-Official/YARC-Launcher/releases/download/v1.2.0/YARC.Launcher_1.2.0_amd64.AppImage"
+        },
+        "version": "v1.2.0"
+    }
+}

@@ -20,6 +20,7 @@ in
       powerBar
       shuffle
     ];
+    theme = spicePkgs.themes.comfy;
     enabledCustomApps = with spicePkgs.apps; [
       lyricsPlus
     ];
