@@ -36,12 +36,11 @@ in
     (pkgs.writeTextFile {
       name = "udev-hidapi";
       text = ''
-        KERNEL=="hidraw*", TAG+="uaccess", SUBSYSTEM=="hidraw", GROUP="hidraw", MODE="0660"
+        KERNEL=="hidraw*", TAG+="uaccess"
       '';
       destination = "/etc/udev/rules.d/69-hid.rules";
     })
   ];
-  users.groups.hidraw = { };
   # https://github.com/openzfs/zfs/issues/10891
   systemd.services.systemd-udev-settle.enable = false;
   xdg = {
@@ -156,7 +155,6 @@ in
     extraGroups = [
       "networkmanager"
       "wheel"
-      "hidraw"
     ];
   };
 
@@ -210,7 +208,7 @@ in
     man-pages-posix
     vscode
     fuzzel
-    (import ../../packages/yarc.nix)
+    custom.yarc
     pegasus-frontend
     skyscraper
     xfce.thunar
