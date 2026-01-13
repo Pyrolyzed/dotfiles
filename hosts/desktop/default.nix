@@ -228,6 +228,7 @@ in
     python313Packages.pywal
     python313Packages.watchdog
     rusty-path-of-building
+    zathura
     gpu-screen-recorder-gtk
     obs-studio
     appimage-run
