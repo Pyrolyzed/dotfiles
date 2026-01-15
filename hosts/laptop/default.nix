@@ -53,7 +53,19 @@ in
   ];
 
   services.dbus.implementation = "broker";
-  services.printing.enable = true;
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
+  };
+  services.printing = {
+    enable = true;
+    drivers = with pkgs; [
+      mfcl3770cdwlpr
+      cups-filters
+      cups-browsed
+    ];
+  };
 
   services.displayManager.sddm.enable = true;
   services.displayManager.sddm.wayland.enable = true;
