@@ -13,12 +13,12 @@ in
     ./hardware-configuration.nix
     ../../modules/nixos/grub.nix
     ../../modules/nixos/apps/spicetify.nix
-    ../../modules/nixos/network.nix
+    #../../modules/nixos/network.nix
     inputs.noctalia.nixosModules.default
   ];
 
   services.noctalia-shell.enable = true;
-
+  networking.networkmanager.enable = true;
   systemd.services.NetworkManager-wait-online.enable = false;
 
   xdg = {
