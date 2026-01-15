@@ -38,4 +38,5 @@ let
 in
 {
   desktop = mkConfiguration "desktop";
+  laptop = mkConfiguration "laptop";
 }
