@@ -28,17 +28,17 @@ in
         mangohud
         protonup-qt
         winetricks
-        retroarch-full
-        duckstation
-        pcsx2
-        rpcs3
-        dolphin-emu
-        cemu
-        flycast
-        ppsspp-qt
-        melonDS
-        azahar
-        shadps4
+        #retroarch-full
+        #duckstation
+        #pcsx2
+        #rpcs3
+        #dolphin-emu
+        #cemu
+        #flycast
+        #ppsspp-qt
+        #melonDS
+        #azahar
+        #shadps4
       ]
       ++ lib.optionals cfg.lutris.enable [ lutris ]
       ++ lib.optionals cfg.minecraft.enable [ prismlauncher ]

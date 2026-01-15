@@ -2,7 +2,8 @@
   description = "NixOS configuration flake";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/c0b0e0fddf73fd517c3471e546c0df87a42d53f4";
+    #nixpkgs.url = "github:nixos/nixpkgs/c0b0e0fddf73fd517c3471e546c0df87a42d53f4";
+    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs?ref=nixos-25.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     eden-emu = {
