@@ -108,7 +108,7 @@ in
   };
 
   xdg.icons.enable = true;
-  boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
+  boot.kernelPackages = pkgs.linuxPackages_zen;
 
   # AMD GPU
   boot.initrd.kernelModules = [
