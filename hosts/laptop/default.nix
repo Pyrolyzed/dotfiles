@@ -45,6 +45,9 @@ in
   networking.hostName = "laptop";
   networking.hostId = "f24c3b0c";
 
+  powerManagement.powertop.enable = true;
+  services.upower.enable = true;
+  services.power-profiles-daemon.enable = true;
   time.timeZone = "America/Chicago";
 
   nix.settings.experimental-features = [
@@ -76,6 +79,7 @@ in
   };
 
   programs.zsh.enable = true;
+  programs.steam.enable = true;
 
   hardware.graphics = {
     enable = true;
@@ -139,6 +143,7 @@ in
     manix
     inputs.matugen.packages."x86_64-linux".default
     adw-gtk3
+    adwaita-icon-theme
     nwg-look
     neovim
     kdePackages.qt6ct
