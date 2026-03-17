@@ -19,5 +19,6 @@
         });
     })
     #inputs.niri.overlays.niri
-  ];
+  ]
+  ++ [ inputs.millennium.overlays.default ];
 }

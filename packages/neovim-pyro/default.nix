@@ -105,6 +105,7 @@ in
       enableTreesitter = true;
       bash.enable = true;
       lua.enable = true;
+      svelte.enable = true;
       markdown = {
         enable = true;
         extensions.render-markdown-nvim.enable = true;
@@ -121,6 +122,7 @@ in
       clang.enable = true;
       python.enable = true;
       html.enable = true;
+      css.enable = true;
     };
   };
 }

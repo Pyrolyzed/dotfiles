@@ -1,0 +1,7 @@
+{"timestamp":"19:46:54:400","category":"none","level":"Debug","message":"Loaded all default flags."}
+{"timestamp":"19:46:54:422","category":"none","level":"Info","message":"This is Peacock v8.3.0 with Node v24.13.0."}
+{"timestamp":"19:46:54:425","category":"boot","level":"Info","message":"Booting Peacock internal services - this may take a moment."}
+{"timestamp":"19:46:54:540","category":"scanGroups","level":"Debug","message":"Discovered 169 escalation groups."}
+{"timestamp":"19:46:54:548","category":"contracts","level":"Info","message":"Loading user contracts..."}
+{"timestamp":"19:46:54:554","category":"contracts","level":"Info","message":"Completed loading contracts."}
+{"timestamp":"19:46:54:627","category":"none","level":"Info","message":"Listening on 0.0.0.0:80..."}

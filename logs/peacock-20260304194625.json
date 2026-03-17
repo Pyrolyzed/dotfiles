@@ -1,0 +1,27 @@
+{"timestamp":"19:46:26:240","category":"none","level":"Debug","message":"Loaded all default flags."}
+{"timestamp":"19:46:26:264","category":"none","level":"Info","message":"This is Peacock v8.3.0 with Node v24.13.0."}
+{"timestamp":"19:46:26:265","category":"none","level":"Debug","message":"Creating missing directory contractSessions"}
+{"timestamp":"19:46:26:265","category":"none","level":"Debug","message":"Creating missing directory plugins"}
+{"timestamp":"19:46:26:266","category":"none","level":"Debug","message":"Creating missing directory userdata"}
+{"timestamp":"19:46:26:266","category":"none","level":"Debug","message":"Creating missing directory contracts"}
+{"timestamp":"19:46:26:266","category":"none","level":"Debug","message":"Creating missing directory userdata/epicids"}
+{"timestamp":"19:46:26:266","category":"none","level":"Debug","message":"Creating missing directory userdata/steamids"}
+{"timestamp":"19:46:26:266","category":"none","level":"Debug","message":"Creating missing directory userdata/users"}
+{"timestamp":"19:46:26:267","category":"none","level":"Debug","message":"Creating missing directory userdata/h1/steamids"}
+{"timestamp":"19:46:26:267","category":"none","level":"Debug","message":"Creating missing directory userdata/h1/epicids"}
+{"timestamp":"19:46:26:267","category":"none","level":"Debug","message":"Creating missing directory userdata/h1/users"}
+{"timestamp":"19:46:26:267","category":"none","level":"Debug","message":"Creating missing directory userdata/h2/steamids"}
+{"timestamp":"19:46:26:267","category":"none","level":"Debug","message":"Creating missing directory userdata/h2/users"}
+{"timestamp":"19:46:26:267","category":"none","level":"Debug","message":"Creating missing directory userdata/scpc/users"}
+{"timestamp":"19:46:26:267","category":"none","level":"Debug","message":"Creating missing directory userdata/scpc/steamids"}
+{"timestamp":"19:46:26:267","category":"none","level":"Debug","message":"Creating missing directory images/actors"}
+{"timestamp":"19:46:26:268","category":"none","level":"Debug","message":"Creating missing directory images/contracts"}
+{"timestamp":"19:46:26:268","category":"none","level":"Debug","message":"Creating missing directory images/contracts/elusive"}
+{"timestamp":"19:46:26:268","category":"none","level":"Debug","message":"Creating missing directory images/contracts/escalation"}
+{"timestamp":"19:46:26:268","category":"none","level":"Debug","message":"Creating missing directory images/contracts/featured"}
+{"timestamp":"19:46:26:268","category":"none","level":"Debug","message":"Creating missing directory images/unlockables_override"}
+{"timestamp":"19:46:26:271","category":"boot","level":"Info","message":"Booting Peacock internal services - this may take a moment."}
+{"timestamp":"19:46:26:397","category":"scanGroups","level":"Debug","message":"Discovered 169 escalation groups."}
+{"timestamp":"19:46:26:421","category":"contracts","level":"Info","message":"Loading user contracts..."}
+{"timestamp":"19:46:26:427","category":"contracts","level":"Info","message":"Completed loading contracts."}
+{"timestamp":"19:46:26:533","category":"none","level":"Info","message":"Listening on 0.0.0.0:80..."}

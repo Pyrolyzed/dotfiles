@@ -4,6 +4,7 @@
   pkgs,
   pkgs-stable,
   pkgs-unstable,
+  pkgs-mesa,
   system,
   user ? "pyro",
   ...
@@ -26,6 +27,7 @@ let
           lib
           pkgs-stable
           pkgs-unstable
+          pkgs-mesa
           ;
       };
       modules = [

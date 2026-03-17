@@ -2,7 +2,7 @@
   description = "NixOS configuration flake";
 
   inputs = {
-    #nixpkgs.url = "github:nixos/nixpkgs/c0b0e0fddf73fd517c3471e546c0df87a42d53f4";
+    nixpkgs-mesa.url = "github:nixos/nixpkgs/d85cd7fb61826dd4cb115d7929a75047f08d0749";
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs?ref=nixos-25.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs?ref=nixos-unstable";
@@ -10,7 +10,7 @@
       url = "github:grantimatter/eden-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
+    millennium.url = "github:SteamClientHomebrew/Millennium?dir=packages/nix";
     nvf = {
       url = "github:notashelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -59,6 +59,10 @@
         config.allowUnfree = true;
         inherit system;
       };
+      pkgs-mesa = import inputs.nixpkgs-mesa {
+        config.allowUnfree = true;
+        inherit system;
+      };
     in
     {
       # nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
@@ -79,6 +83,7 @@
           pkgs
           pkgs-stable
           pkgs-unstable
+          pkgs-mesa
           system
           inputs
           ;

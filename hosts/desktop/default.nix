@@ -1,6 +1,7 @@
 {
   pkgs,
   pkgs-unstable,
+  pkgs-mesa,
   inputs,
   lib,
   ...
@@ -16,19 +17,35 @@ in
     ../../modules/nixos/apps/spicetify.nix
     ../../modules/nixos/network.nix
     # Eden emulator
-    inputs.eden-emu.nixosModules.default
+    #inputs.eden-emu.nixosModules.default
     inputs.noctalia.nixosModules.default
   ];
 
   services.noctalia-shell.enable = true;
   # Eden emulator
-  programs.eden.enable = true;
+  #programs.eden.enable = true;
 
   custom = {
     apps.gaming = {
       enable = true;
       minecraft.enable = true;
       lutris.enable = true;
+    };
+  };
+  security.polkit = {
+    enable = true;
+  };
+  systemd.user.services.polkit-gnome-authentication-agent-1 = {
+    description = "polkit-gnome-authentication-agent-1";
+    wantedBy = [ "graphical-session.target" ];
+    wants = [ "graphical-session.target" ];
+    after = [ "graphical-session.target" ];
+    serviceConfig = {
+      Type = "simple";
+      ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+      Restart = "on-failure";
+      RestartSec = 1;
+      TimeoutStopSec = 10;
     };
   };
   systemd.services.NetworkManager-wait-online.enable = false;
@@ -103,7 +120,7 @@ in
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
-    package = pkgs-unstable.mesa;
+    #package = pkgs-mesa.mesa;
     #package32 = pkgs-unstable.mesa;
   };
 
@@ -124,7 +141,7 @@ in
     "zfs"
   ];
   # Auto mount
-  boot.zfs.extraPools = [ "storage" ];
+  #boot.zfs.extraPools = [ "storage" ];
   boot.zfs.package = pkgs.zfs_2_4;
 
   # Gaming time
@@ -146,19 +163,19 @@ in
     autoStart = true;
   };
 
-  fileSystems."/home/pyro/NAS" = {
-    device = "//192.168.1.200/Storage";
-    fsType = "cifs";
-    # Plain text password because I'm lazy and also because it's not exposed to the internet and also I don't use it anywhere else.
-    options = [
-      "uid=1000"
-      "username=pyro"
-      "password=spoons"
-      "x-systemd.automount"
-      "x-systemd.device-timeout=5s"
-      "x-systemd.mount-timeout=5s"
-    ];
-  };
+  #fileSystems."/home/pyro/NAS" = {
+  #  device = "//192.168.1.200/Storage";
+  #  fsType = "cifs";
+  #  # Plain text password because I'm lazy and also because it's not exposed to the internet and also I don't use it anywhere else.
+  #  options = [
+  #    "uid=1000"
+  #    "username=pyro"
+  #    "password=spoons"
+  #    "x-systemd.automount"
+  #    "x-systemd.device-timeout=5s"
+  #    "x-systemd.mount-timeout=5s"
+  #  ];
+  #};
 
   users.users.pyro = {
     isNormalUser = true;
@@ -180,6 +197,7 @@ in
     };
   };
 
+  services.flatpak.enable = true;
   hardware.new-lg4ff.enable = true;
 
   programs.niri.enable = true;
@@ -190,19 +208,31 @@ in
     noto-fonts-cjk-sans
     poppins
     nerd-fonts.caskaydia-cove
+    nerd-fonts.comic-shanns-mono
     iosevka
     rubik
     overpass
   ];
 
-  programs.gpu-screen-recorder.enable = true;
-  programs.gpu-screen-recorder.package = pkgs.gpu-screen-recorder;
+  services.keyd = {
+    enable = true;
+    keyboards = {
+      default = {
+        ids = [ "*" ];
+        settings = {
+          main.rightalt = "layer(meta)";
+        };
+      };
+    };
+  };
   programs.dconf.enable = true;
   environment.systemPackages = with pkgs; [
     manix
-    gpu-screen-recorder
+    polkit_gnome
+    via
     inputs.matugen.packages."x86_64-linux".default
     steamtinkerlaunch
+    adwaita-icon-theme
     adw-gtk3
     nwg-look
     neovim
@@ -223,9 +253,13 @@ in
     custom.yarc
     pegasus-frontend
     skyscraper
+    peacock
     xfce.thunar
+    gpu-screen-recorder
     nautilus
     ddcutil
+    nodejs
+    samira
     wl-clipboard
     grim
     arma3-unix-launcher
@@ -237,11 +271,13 @@ in
       ];
     })
     libqalculate
+    reaper
+    synthesia
+    bottles
     python313Packages.pywal
     python313Packages.watchdog
     rusty-path-of-building
     zathura
-    gpu-screen-recorder-gtk
     obs-studio
     appimage-run
     mangohud
@@ -258,10 +294,12 @@ in
     wikiman
     slurp
     foliate
+    caligula
     p7zip
     xwayland-satellite
     fastfetch
     pavucontrol
+    wine
     btop
     vesktop
     gptfdisk
@@ -292,7 +330,13 @@ in
     oversteer
     hidapi
     udev
+    gimp
     libuv
+    yt-dlp
+    libunarr
+    wine64
+    er-patcher
+    chromium
     inputs.zen-browser.packages."${system}".default
   ];
   services.openssh.enable = true;
