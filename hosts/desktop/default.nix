@@ -163,19 +163,19 @@ in
     autoStart = true;
   };
 
-  #fileSystems."/home/pyro/NAS" = {
-  #  device = "//192.168.1.200/Storage";
-  #  fsType = "cifs";
-  #  # Plain text password because I'm lazy and also because it's not exposed to the internet and also I don't use it anywhere else.
-  #  options = [
-  #    "uid=1000"
-  #    "username=pyro"
-  #    "password=spoons"
-  #    "x-systemd.automount"
-  #    "x-systemd.device-timeout=5s"
-  #    "x-systemd.mount-timeout=5s"
-  #  ];
-  #};
+  fileSystems."/home/pyro/NAS" = {
+    device = "//192.168.1.143/Storage";
+    fsType = "cifs";
+    # Plain text password because I'm lazy and also because it's not exposed to the internet and also I don't use it anywhere else.
+    options = [
+      "uid=1000"
+      "username=pyro"
+      "password=spoons"
+      "x-systemd.automount"
+      "x-systemd.device-timeout=5s"
+      "x-systemd.mount-timeout=5s"
+    ];
+  };
 
   users.users.pyro = {
     isNormalUser = true;
