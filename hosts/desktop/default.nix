@@ -21,7 +21,6 @@ in
     inputs.noctalia.nixosModules.default
   ];
 
-  services.noctalia-shell.enable = true;
   # Eden emulator
   #programs.eden.enable = true;
 
@@ -315,7 +314,7 @@ in
     nixfmt-rfc-style
     unrar
     cifs-utils
-    javaPackages.compiler.temurin-bin.jdk-21
+    temurin-bin-21
     kitty
     copyq
     git
