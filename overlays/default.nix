@@ -17,6 +17,9 @@
             host
             ;
         });
+      openldap = prev.openldap.overrideAttrs (_: {
+        doCheck = false;
+      });
     })
     #inputs.niri.overlays.niri
   ]
