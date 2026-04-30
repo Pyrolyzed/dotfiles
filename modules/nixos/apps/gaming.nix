@@ -45,7 +45,6 @@ in
       ++ [ pkgs-stable.protontricks ];
     programs.steam = {
       enable = true;
-      #TODO: fix
       #package = pkgs.millennium-steam;
       remotePlay.openFirewall = true;
       dedicatedServer.openFirewall = true;
