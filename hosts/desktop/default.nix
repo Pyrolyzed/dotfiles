@@ -4,6 +4,7 @@
   pkgs-mesa,
   inputs,
   lib,
+  config,
   ...
 }:
 
@@ -130,7 +131,6 @@ in
   boot.initrd.kernelModules = [
     "amdgpu"
   ];
-
   # Nvidia GPU
   #services.xserver.videoDrivers = [ "nvidia" ];
   #hardware.nvidia.open = false;
@@ -282,7 +282,9 @@ in
         rofi-file-browser
       ];
     })
+    qemu
     libqalculate
+    looking-glass-client
     reaper
     synthesia
     bottles
@@ -292,6 +294,7 @@ in
     zathura
     obs-studio
     appimage-run
+    ntfs3g
     mangohud
     pywalfox-native
     fastfetch
