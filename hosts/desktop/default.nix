@@ -120,17 +120,16 @@ in
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
-    #package = pkgs-mesa.mesa;
-    #package32 = pkgs-unstable.mesa;
   };
 
   xdg.icons.enable = true;
   boot.kernelPackages = pkgs.linuxPackages_zen;
+  boot.kernelModules = [
+    "amdgpu"
+    "ntsync"
+  ];
 
   # AMD GPU
-  boot.initrd.kernelModules = [
-    "amdgpu"
-  ];
   # Nvidia GPU
   #services.xserver.videoDrivers = [ "nvidia" ];
   #hardware.nvidia.open = false;
@@ -226,6 +225,10 @@ in
     overpass
   ];
 
+  programs.java = {
+    enable = true;
+    package = pkgs.temurin-bin-21;
+  };
   services.keyd = {
     enable = true;
     keyboards = {

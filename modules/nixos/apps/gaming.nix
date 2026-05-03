@@ -27,6 +27,7 @@ in
       [
         mangohud
         protonup-qt
+        gamemode
         winetricks
         #retroarch-full
         #duckstation
