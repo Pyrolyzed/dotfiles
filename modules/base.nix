@@ -19,6 +19,7 @@ in
       boot = {
         supportedFilesystems = [ "zfs" ];
         initrd.supportedFilesystems = [ "zfs" ];
+        zfs.forceImportRoot = false;
       };
 
       networking.hostId = settings.hostId;
