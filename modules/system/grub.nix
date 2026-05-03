@@ -32,9 +32,7 @@ in
               efiInstallAsRemovable = config.custom.boot.removable;
               theme = inputs.nixos-grub-themes.packages.${system}.nixos;
             };
-            # Infinite boot screen
-            timeout = lib.mkDefault null;
-            efi.canTouchEfiVariables = true;
+            efi.canTouchEfiVariables = !config.custom.boot.removable;
           };
         };
       };

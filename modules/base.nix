@@ -38,6 +38,7 @@ in
           };
         };
       };
+
       users = {
         users.root.initialPassword = "password";
         users.pyro = {
@@ -60,7 +61,9 @@ in
         };
         defaultUserShell = pkgs.zsh;
       };
+
       programs.zsh.enable = true;
+
       boot.kernel.sysctl = {
         "fs.file-max" = 2097152;
         "vm.max_map_count" = 214748342;
