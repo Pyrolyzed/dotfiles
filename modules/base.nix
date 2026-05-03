@@ -97,7 +97,7 @@ in
 
       documentation.man.enable = true;
       # Slow, but needed for apropos
-      documentation.man.generateCaches = true;
+      documentation.man.cache.enable = true;
 
       environment = {
         shells = [ pkgs.zsh ];
