@@ -31,6 +31,7 @@ in
               devices = config.custom.boot.devices;
               efiInstallAsRemovable = config.custom.boot.removable;
               theme = inputs.nixos-grub-themes.packages.${system}.nixos;
+              useOSProber = true;
             };
             efi.canTouchEfiVariables = !config.custom.boot.removable;
           };
