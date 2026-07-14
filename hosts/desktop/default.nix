@@ -19,7 +19,6 @@ in
     ../../modules/nixos/network.nix
     # Eden emulator
     #inputs.eden-emu.nixosModules.default
-    inputs.noctalia.nixosModules.default
   ];
 
   # Eden emulator
@@ -106,9 +105,18 @@ in
     ];
   };
 
-  services.displayManager.sddm.enable = true;
-  #  services.displayManager.sddm.wayland.enable = true;
-  services.xserver.enable = true;
+  programs.uwsm = {
+    enable = true;
+    waylandCompositors = {
+      niri = {
+        prettyName = "Niri";
+        comment = "Niri WM";
+        binPath = "/run/current-system/sw/bin/niri";
+      };
+    };
+  };
+
+  services.displayManager.gdm.enable = true;
 
   services.pipewire = {
     enable = true;
@@ -135,12 +143,12 @@ in
   #hardware.nvidia.open = false;
 
   # Enable ZFS
-  boot.supportedFilesystems = [
-    "zfs"
-  ];
+  # boot.supportedFilesystems = [
+  #   "zfs"
+  # ];
   # Auto mount
   #boot.zfs.extraPools = [ "storage" ];
-  boot.zfs.package = pkgs.zfs_2_4;
+  #boot.zfs.package = pkgs.zfs;
 
   # Gaming time
   boot.kernel.sysctl = {
@@ -153,6 +161,7 @@ in
     enable = true;
     openFirewall = true;
   };
+
   # Sunshine game streaming
   services.sunshine = {
     enable = true;
@@ -162,7 +171,7 @@ in
   };
 
   fileSystems."/home/pyro/NAS" = {
-    device = "//192.168.1.143/Storage";
+    device = "//192.168.1.100/Storage";
     fsType = "cifs";
     # Plain text password because I'm lazy and also because it's not exposed to the internet and also I don't use it anywhere else.
     options = [
@@ -175,7 +184,7 @@ in
     ];
   };
   fileSystems."/home/pyro/Shared" = {
-    device = "//192.168.1.143/Shared";
+    device = "//192.168.1.100/Shared";
     fsType = "cifs";
     # Plain text password because I'm lazy and also because it's not exposed to the internet and also I don't use it anywhere else.
     options = [
@@ -212,7 +221,7 @@ in
   hardware.new-lg4ff.enable = true;
 
   programs.niri.enable = true;
-  services.desktopManager.cosmic.enable = true;
+  #services.desktopManager.cosmic.enable = true;
 
   fonts.packages = with pkgs; [
     noto-fonts
@@ -251,6 +260,7 @@ in
     adw-gtk3
     nwg-look
     neovim
+    weston
     kdePackages.qt6ct
     python314
     ffmpeg-full
@@ -270,7 +280,6 @@ in
     skyscraper
     peacock
     xfce.thunar
-    gpu-screen-recorder
     nautilus
     ddcutil
     nodejs
@@ -279,6 +288,7 @@ in
     grim
     arma3-unix-launcher
     qalculate-gtk
+    inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
     (rofi.override {
       plugins = with pkgs; [
         rofi-calc
@@ -290,7 +300,7 @@ in
     looking-glass-client
     reaper
     synthesia
-    bottles
+    #bottles
     python313Packages.pywal
     python313Packages.watchdog
     rusty-path-of-building
@@ -342,7 +352,6 @@ in
     gamescope
     labwc
     obsidian
-    zfs
     # morrowind
     openmw
     oversteer

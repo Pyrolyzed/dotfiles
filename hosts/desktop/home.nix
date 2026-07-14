@@ -18,9 +18,7 @@ in
     #inputs.dms.homeModules.dankMaterialShell.default
   ];
 
-  programs.noctalia-shell = {
-    enable = true;
-  };
+  programs.noctalia.systemd.enable = true;
   #programs.dankMaterialShell = {
   #enable = true;
   #enableDynamicTheming = false;

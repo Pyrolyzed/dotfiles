@@ -16,7 +16,6 @@
       enabled = true;
     };
     nameservers = [
-      "192.168.1.120"
       "1.1.1.1"
     ];
     interfaces.enp8s0 = {
